@@ -1,10 +1,12 @@
 package model;
 
 public enum Chapter {
-	THE FUNDAMENTALS OF TESTING(1), LIFE CYCLES(2), STATIC TESTING(3), TEST DESIGN TECHNIQUES(4),
-	TEST MANAGEMENT(5),TOOL SUPPORT FOR TESTING(6), THE EXAMINATION (7);
+	THE_FUNDAMENTALS_OF_TESTING(1), LIFE_CYCLES(2), STATIC_TESTING(3), TEST_DESIGN_TECHNIQUES(4),
+	TEST_MANAGEMENT(5),TOOL_SUPPORT_FOR_TESTING(6), THE_EXAMINATION (7);
 	
     private final int chapter;
+    private final String[] heading = {"THE FUNDAMENTALS OF TESTING", "LIFE CYCLES", "STATIC TESTING", 
+    		"TEST DESIGN TECHNIQUES", "TEST MANAGEMENT", "TOOL SUPPORT FOR TESTING", "THE EXAMINATION"};
 
     Book(int chapter) {
         this.chapter = chapter;
@@ -12,5 +14,9 @@ public enum Chapter {
     
     public int getChapter() {
         return this.chapter;
+    }
+    
+    public String getHeader(){
+    	return this.heading[this.chapter + 1];
     }
 }
