@@ -6,7 +6,7 @@ public enum Chapter {
 	
     private final int chapter;
 
-    Level(int chapter) {
+    Book(int chapter) {
         this.chapter = chapter;
     }
     
