@@ -3,11 +3,6 @@ package dao;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import model.Answer;
-import model.Chapter;
-import model.Choice;
-import model.Question;
-
 /**
  * 
  * @author asawe_000
@@ -15,7 +10,7 @@ import model.Question;
  * @param <T>
  * @param <ID>
  */
-public abstract class ExamHelperCollectionDao <T, ID extends Serializable> implements IExamHelperCollectionDao<T, ID>{
+public abstract class ExamHelperCollectionDao <T, ID extends Serializable> implements IExamHelperDao<T, ID>{
 
 	protected ArrayList<T> database;
 
@@ -110,26 +105,8 @@ public abstract class ExamHelperCollectionDao <T, ID extends Serializable> imple
 	 * @param id
 	 *            the primar key of the entity to deletee
 	 */
-	public void delete(ID id) {
-		for(T t : database){
-			if(t instanceof Chapter){
-				//if (((Chapter) t).getId() == (long)id);
-				database.remove(t);
-			}
-			else if (t instanceof Question){
-				//if (((Question) t).getId() == (long)id);
-				database.remove(t);
-			}
-			else if (t instanceof Choice){
-				//if (((Choice) t).getId() == (long)id);
-				database.remove(t);
-			}
-			else if (t instanceof Answer){
-				//if (((Answer) t).getId() == (long)id);
-				database.remove(t);
-			}
-		}
-	}
+	public abstract void delete(ID id) ;
+	
 
 
 
