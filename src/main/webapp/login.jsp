@@ -10,7 +10,7 @@
 <body>
 	<%@ include file="header.jsp" %>
 	<%@ include file="navbar.jsp" %>
-	<%@ include file="content/content.jsp" %>
+	<%@ include file="content/loginContent.jsp" %>
 	<jsp:include page="footer.jsp" />
 </body>
 </html>
