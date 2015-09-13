@@ -1,5 +1,44 @@
 package model;
 
 public class Choice {
+	private long choiceId;
+	private long questionId;
+	private String description;
+	/**
+	 * @return the choiceId
+	 */
+	public long getChoiceId() {
+		return choiceId;
+	}
+	/**
+	 * @param choiceId the choiceId to set
+	 */
+	public void setChoiceId(long choiceId) {
+		this.choiceId = choiceId;
+	}
+	/**
+	 * @return the questionId
+	 */
+	public long getQuestionId() {
+		return questionId;
+	}
+	/**
+	 * @param questionId the questionId to set
+	 */
+	public void setQuestionId(long questionId) {
+		this.questionId = questionId;
+	}
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
 }

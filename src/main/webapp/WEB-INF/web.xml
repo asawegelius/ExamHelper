@@ -3,6 +3,16 @@
                          "http://java.sun.com/dtd/web-app_2_3.dtd">
 <web-app>
  <display-name>Archetype Created Web Application</display-name>
+ <servlet>
+ 	<servlet-name>QuestionController</servlet-name>
+ 	<display-name>QuestionController</display-name>
+ 	<description></description>
+ 	<servlet-class>controller.QuestionController</servlet-class>
+ </servlet>
+ <servlet-mapping>
+ 	<servlet-name>QuestionController</servlet-name>
+ 	<url-pattern>/QuestionController</url-pattern>
+ </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
