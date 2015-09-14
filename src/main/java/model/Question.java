@@ -5,6 +5,23 @@ public class Question {
 	private Chapter chapter;
 	private String name;
 	private String description;
+	
+	public Question(){
+		questionId = -1;
+	}
+	
+		
+	public Question(long questionId, Chapter chapter, String name,
+			String description) {
+		super();
+		this.questionId = questionId;
+		this.chapter = chapter;
+		this.name = name;
+		this.description = description;
+	}
+
+
+
 	/**
 	 * @return the questionId
 	 */
