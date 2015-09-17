@@ -1,9 +1,46 @@
 package model;
 
 public class Answer {
+	private long answerId;
 	private long questionId;
 	private long choiceId;
 	private String description;
+	
+	public Answer(){
+		answerId = -1;
+	}
+
+	
+	/**
+	 * @param answerId
+	 * @param questionId
+	 * @param choiceId
+	 * @param description
+	 */
+	public Answer(long answerId, long questionId, long choiceId, String description) {
+		super();
+		this.answerId = answerId;
+		this.questionId = questionId;
+		this.choiceId = choiceId;
+		this.description = description;
+	}
+
+
+	/**
+	 * @return the answerId
+	 */
+	public long getAnswerId() {
+		return answerId;
+	}
+
+
+	/**
+	 * @param answerId the answerId to set
+	 */
+	public void setAnswerId(long answerId) {
+		this.answerId = answerId;
+	}
+
 
 	/**
 	 * @return the questionId
