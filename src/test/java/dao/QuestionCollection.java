@@ -43,4 +43,24 @@ public class QuestionCollection extends ExamHelperCollectionDao<Question, Long> 
 		save(new Question(7, Chapter.TOOL_SUPPORT_FOR_TESTING, "Q7", "What is tool suport for testing?"));
 	}
 
+	@Override
+	public Question findByID(Long id) {
+		for(Question q : database){
+			if(q.getQuestionId() == id){
+				return q;
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public Question findByName(String name) {
+		for(Question q : database){
+			if(q.getName() == name){
+				return q;
+			}
+		}
+		return null;	
+	}
+
 }

@@ -58,10 +58,7 @@ public abstract class ExamHelperCollectionDao <T, ID extends Serializable> imple
 	 *            the entity's primary key
 	 * @return the entity
 	 */
-	public T findByID(ID id) {
-		
-		return null;
-	}
+	public abstract  T findByID(ID id) ;
 
 	/**
 	 * Find an entity by its name
@@ -70,9 +67,7 @@ public abstract class ExamHelperCollectionDao <T, ID extends Serializable> imple
 	 *            the entity's name
 	 * @return the entity
 	 */
-	public T findByName(String name) {
-		return null;
-	}
+	public abstract T findByName(String name) ;
 
 	/**
 	 * Get all entities
@@ -118,4 +113,6 @@ public abstract class ExamHelperCollectionDao <T, ID extends Serializable> imple
 	public int count() {
 		return database.size();
 	}
+	
+	public abstract void populateDatabase();
 }
