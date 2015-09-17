@@ -4,6 +4,25 @@ public class Choice {
 	private long choiceId;
 	private long questionId;
 	private String description;
+	
+	public Choice(){
+		choiceId = -1;
+	}
+	
+	
+	/**
+	 * @param choiceId
+	 * @param questionId
+	 * @param description
+	 */
+	public Choice(long choiceId, long questionId, String description) {
+		super();
+		this.choiceId = choiceId;
+		this.questionId = questionId;
+		this.description = description;
+	}
+
+
 	/**
 	 * @return the choiceId
 	 */
