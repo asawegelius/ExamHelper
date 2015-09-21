@@ -7,9 +7,7 @@ public class Choice {
 	
 	public Choice(){
 		choiceId = -1;
-	}
-	
-	
+	}	
 	/**
 	 * @param choiceId
 	 * @param questionId
@@ -21,8 +19,6 @@ public class Choice {
 		this.questionId = questionId;
 		this.description = description;
 	}
-
-
 	/**
 	 * @return the choiceId
 	 */
@@ -59,5 +55,4 @@ public class Choice {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
 }

@@ -8,9 +8,7 @@ public class Answer {
 	
 	public Answer(){
 		answerId = -1;
-	}
-
-	
+	}	
 	/**
 	 * @param answerId
 	 * @param questionId
@@ -25,7 +23,6 @@ public class Answer {
 		this.description = description;
 	}
 
-
 	/**
 	 * @return the answerId
 	 */
@@ -33,14 +30,12 @@ public class Answer {
 		return answerId;
 	}
 
-
 	/**
 	 * @param answerId the answerId to set
 	 */
 	public void setAnswerId(long answerId) {
 		this.answerId = answerId;
 	}
-
 
 	/**
 	 * @return the questionId
@@ -86,4 +81,5 @@ public class Answer {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 }
