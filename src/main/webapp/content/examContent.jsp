@@ -1,11 +1,15 @@
-
+	<p>
+	
+	</p>
 	<jsp:useBean id="randQuestion"
 					class="model.Question"
 					scope="request"/>
-	<p> First Question: </p>
-	<p>
-	$<jsp:getProperty name="randQuestion" property="name" />
+	<p> 
+	chapter: <jsp:getProperty name="randQuestion" property="chapter" />
 	</p>
 	<p>
-	$<jsp:getProperty name="randQuestion" property="description" />
+	question name: <jsp:getProperty name="randQuestion" property="name" />
+	</p>
+	<p>
+	question :<jsp:getProperty name="randQuestion" property="description" />
 	</p>

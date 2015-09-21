@@ -42,11 +42,19 @@ public class QuestionController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Question question = new Question(1, Chapter.LIFE_CYCLES,"Q1", "What is life cylces?" );
-		request.setAttribute("randQuestion", question);
-		String address = "/WEB-INF/exam.jsp";
-		RequestDispatcher dispatcher = request.getRequestDispatcher(address);
-		dispatcher.forward(request, response);
+        try {
+        	Question question = new Question();
+        	question.setQuestionId(1);
+        	question.setChapter(Chapter.LIFE_CYCLES);
+        	question.setName("Q1");
+        	question.setDescription("What is life cycles?");
+    		request.setAttribute("randQuestion", question);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/exam.jsp");
+            dispatcher.forward(request, response);
+          } catch (Exception ex) {
+        	  System.out.println("exception in questioncontroller:");
+            ex.printStackTrace();
+          }
 	}
 
 	public IExamHelperDao<Question, Long> getDatabase() {
