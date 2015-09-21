@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.IExamHelperDao;
 import dao.QuestionCollection;
+import model.Chapter;
 import model.Question;
 
 /**
@@ -43,9 +44,7 @@ public class QuestionController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Random randomGenerator = new Random();
-		//long index = randomGenerator.nextInt(database.count());
-		Question question = database.findByID((long)1);
+		Question question = new Question(1, Chapter.LIFE_CYCLES,"Q1", "What is life cylces?" );
 		request.setAttribute("randQuestion", question);
 		String address = "/WEB-INF/exam.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(address);
