@@ -1,14 +1,17 @@
 package controller;
 
 import java.io.IOException;
+import java.util.Random;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Question;
 import dao.IExamHelperDao;
+import dao.QuestionCollection;
+import model.Question;
 
 /**
  * Servlet implementation class QuestionController
@@ -21,7 +24,7 @@ public class QuestionController extends HttpServlet {
      */
     public QuestionController() {
         super();
-        // TODO Auto-generated constructor stub
+        database = new QuestionCollection();
     }
     
     public QuestionController(IExamHelperDao<Question, Long> database) {
@@ -33,14 +36,20 @@ public class QuestionController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+        doPost(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		Random randomGenerator = new Random();
+		//long index = randomGenerator.nextInt(database.count());
+		Question question = database.findByID((long)1);
+		request.setAttribute("randQuestion", question);
+		String address = "/WEB-INF/exam.jsp";
+		RequestDispatcher dispatcher = request.getRequestDispatcher(address);
+		dispatcher.forward(request, response);
 	}
 
 	public IExamHelperDao<Question, Long> getDatabase() {
