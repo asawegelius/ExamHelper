@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"
-    import="model.*"%>
+    import="model.Question"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,16 +11,7 @@
 <body>
 	<%@ include file="../header.jsp" %>
 	<%@ include file="../navbar.jsp" %>
-	<jsp:useBean id="randQuestion"
-					class="model.Question"
-					scope="request"/>
-	<p> First Question: </p>
-	<p>
-	$<jsp:getProperty name="randQuestion" property="name" />
-	</p>
-	<p>
-	$<jsp:getProperty name="randQuestion" property="description" />
-	</p>
+
 	<%@ include file="../content/examContent.jsp" %>
 	<jsp:include page="../footer.jsp" />
 </body>

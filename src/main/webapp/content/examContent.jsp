@@ -1,2 +1,11 @@
-<jsp:useBean id="question" type="model.Question" scope="request"/>
-<div> <h1> Under Construction</h1></div>
+
+	<jsp:useBean id="randQuestion"
+					class="model.Question"
+					scope="request"/>
+	<p> First Question: </p>
+	<p>
+	$<jsp:getProperty name="randQuestion" property="name" />
+	</p>
+	<p>
+	$<jsp:getProperty name="randQuestion" property="description" />
+	</p>
