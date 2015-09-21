@@ -9,9 +9,19 @@
 <title>Exam Helper</title>
 </head>
 <body>
-	<%@ include file="header.jsp" %>
-	<%@ include file="navbar.jsp" %>
-	<%@ include file="content/examContent.jsp" %>
-	<jsp:include page="footer.jsp" />
+	<%@ include file="../header.jsp" %>
+	<%@ include file="../navbar.jsp" %>
+	<jsp:useBean id="randQuestion"
+					class="model.Question"
+					scope="request"/>
+	<p> First Question: </p>
+	<p>
+	$<jsp:getProperty name="randQuestion" property="name" />
+	</p>
+	<p>
+	$<jsp:getProperty name="randQuestion" property="description" />
+	</p>
+	<%@ include file="../content/examContent.jsp" %>
+	<jsp:include page="../footer.jsp" />
 </body>
 </html>

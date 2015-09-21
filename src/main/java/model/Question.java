@@ -9,19 +9,14 @@ public class Question {
 	public Question(){
 		questionId = -1;
 	}
-	
-		
-	public Question(long questionId, Chapter chapter, String name,
-			String description) {
+			
+	public Question(long questionId, Chapter chapter, String name,String description) {
 		super();
 		this.questionId = questionId;
 		this.chapter = chapter;
 		this.name = name;
 		this.description = description;
 	}
-
-
-
 	/**
 	 * @return the questionId
 	 */
