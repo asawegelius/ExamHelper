@@ -1,7 +1,7 @@
 package dao;
 
 import model.Chapter;
-import model.Question;
+
 
 public class ChapterCollection extends ExamHelperCollectionDao<Chapter, Long>{
 
@@ -46,5 +46,7 @@ public class ChapterCollection extends ExamHelperCollectionDao<Chapter, Long>{
 		return null;
 			
 	}
+
+	
 
 }
