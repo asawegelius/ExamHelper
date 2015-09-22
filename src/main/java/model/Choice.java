@@ -1,6 +1,12 @@
 package model;
 
-public class Choice {
+import java.io.Serializable;
+
+public class Choice implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private long choiceId;
 	private long questionId;
 	private String description;
