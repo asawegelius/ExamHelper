@@ -15,6 +15,8 @@ public class Answer implements Serializable{
 	public Answer(){
 		answerId = -1;
 	}	
+
+
 	/**
 	 * @param answerId
 	 * @param questionId
@@ -28,6 +30,7 @@ public class Answer implements Serializable{
 		this.choiceId = choiceId;
 		this.description = description;
 	}
+
 
 	/**
 	 * @return the answerId

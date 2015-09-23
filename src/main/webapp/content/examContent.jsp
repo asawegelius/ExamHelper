@@ -1,16 +1,9 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<jsp:useBean id="randExam" class="model.Exam" scope="request" />
-
-<c:forEach items="${questions}" var="randExam.getQuestions()">
-	<p>
-		chapter:
-		${questions.getChapter()}
-	</p>
-	<p>
-		question name:
-		${questions.getName()}
-	</p>
-	<p>
-		question :${questions.getDescription()}
-	</p>
-</c:forEach>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" import="model.Question"
+	import="java.util.ArrayList"%>
+<% ArrayList<Question> myList = (ArrayList<Question>) request.getAttribute("questions"); 
+	for(Question q : myList) {%>
+	<p>chapter:  <%out.print(q.getChapter());%></p>
+	<p>question name: <%out.print(q.getName());%></p>
+	<p>question :<%out.print(q.getDescription());}%></p>
