@@ -2,6 +2,7 @@ package dao;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.lang.reflect.*;
 
 /**
  * 
@@ -13,9 +14,11 @@ import java.util.ArrayList;
 public abstract class ExamHelperCollectionDao <T extends Serializable, ID> implements IExamHelperDao<T , ID>{
 
 	protected ArrayList<T> database;
-
+	//private Class<T> type;
+	
 	public ExamHelperCollectionDao() {
 		this.database = new ArrayList<T>();
+		//type = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
 	}
 
 	public ExamHelperCollectionDao(ArrayList<T> database) {

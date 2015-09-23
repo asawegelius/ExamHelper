@@ -1,7 +1,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:useBean id="randExam" class="model.Exam" scope="request" />
 
-<c:forEach items="${questions}" var="questions">
+<c:forEach items="${questions}" var="randExam.getQuestions()">
 	<p>
 		chapter:
 		${questions.getChapter()}
