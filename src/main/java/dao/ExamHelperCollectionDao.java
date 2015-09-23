@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * @param <T>
  * @param <ID>
  */
-public abstract class ExamHelperCollectionDao <T, ID extends Serializable> implements IExamHelperDao<T, ID>{
+public abstract class ExamHelperCollectionDao <T extends Serializable, ID> implements IExamHelperDao<T , ID>{
 
 	protected ArrayList<T> database;
 

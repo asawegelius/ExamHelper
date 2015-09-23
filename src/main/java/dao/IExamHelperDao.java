@@ -17,7 +17,7 @@ import java.util.List;
  * @param <ID>
  *            the primary key type
  */
-public interface IExamHelperDao<T, ID extends Serializable> {
+public interface IExamHelperDao<T extends Serializable, ID> {
 
 
 	/**

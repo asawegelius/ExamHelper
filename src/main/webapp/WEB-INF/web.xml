@@ -4,14 +4,24 @@
 <web-app>
  <display-name>Archetype Created Web Application</display-name>
  <servlet>
- 	<servlet-name>QuestionController</servlet-name>
- 	<display-name>QuestionController</display-name>
+ 	<servlet-name>QuestionServlet</servlet-name>
+ 	<display-name>QuestionServlet</display-name>
  	<description></description>
- 	<servlet-class>controller.QuestionController</servlet-class>
+ 	<servlet-class>controller.QuestionServlet</servlet-class>
+ </servlet>
+ <servlet>
+ 	<servlet-name>ExamServlet</servlet-name>
+ 	<display-name>ExamServlet</display-name>
+ 	<description></description>
+ 	<servlet-class>controller.ExamServlet</servlet-class>
  </servlet>
  <servlet-mapping>
- 	<servlet-name>QuestionController</servlet-name>
- 	<url-pattern>/QuestionController</url-pattern>
+ 	<servlet-name>QuestionServlet</servlet-name>
+ 	<url-pattern>/QuestionServlet</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+ 	<servlet-name>ExamServlet</servlet-name>
+ 	<url-pattern>/ExamServlet</url-pattern>
  </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>

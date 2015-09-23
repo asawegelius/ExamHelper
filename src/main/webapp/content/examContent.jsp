@@ -1,6 +1,4 @@
-	<p>
-	
-	</p>
+
 	<jsp:useBean id="randQuestion"
 					class="model.Question"
 					scope="request"/>
