@@ -49,10 +49,10 @@ public class QuestionServlet extends HttpServlet {
         	question.setName("Q1");
         	question.setDescription("What is life cycles?");
     		request.setAttribute("randQuestion", question);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/exam.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("exam.jsp");
             dispatcher.forward(request, response);
           } catch (Exception ex) {
-        	  System.out.println("exception in questioncontroller:");
+        	  System.out.println("exception in QuestionServlet");
             ex.printStackTrace();
           }
 	}

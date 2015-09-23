@@ -1,13 +1,16 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<jsp:useBean id="randExam" class="model.Exam" scope="request" />
 
-	<jsp:useBean id="randQuestion"
-					class="model.Question"
-					scope="request"/>
-	<p> 
-	chapter: <jsp:getProperty name="randQuestion" property="chapter" />
+<c:forEach items="${questions}" var="questions">
+	<p>
+		chapter:
+		${questions.getChapter()}
 	</p>
 	<p>
-	question name: <jsp:getProperty name="randQuestion" property="name" />
+		question name:
+		${questions.getName()}
 	</p>
 	<p>
-	question :<jsp:getProperty name="randQuestion" property="description" />
+		question :${questions.getDescription()}
 	</p>
+</c:forEach>

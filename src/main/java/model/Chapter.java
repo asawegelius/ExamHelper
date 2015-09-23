@@ -21,7 +21,7 @@ public enum Chapter{
 
     
     public String getHeader(){
-    	return this.heading[(int) (this.no + 1)];
+    	return this.heading[(int) (this.no)];
     }
   
 }

@@ -6,6 +6,10 @@ import model.Choice;
 
 
 public class ChoiceCollection extends ExamHelperCollectionDao<Choice, Long> implements IChoiceDao<Choice, Long>{
+	
+	public ChoiceCollection(){
+		populateDatabase();
+	}
 	@Override
 	public void update(Choice entity){
 		for(Choice ch : database){

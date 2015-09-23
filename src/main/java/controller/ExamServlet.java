@@ -50,18 +50,18 @@ public class ExamServlet extends HttpServlet {
 	        	Exam exam = new Exam();
 	        	ArrayList<Question> questions = new ArrayList<Question>();
 	        	ArrayList<ArrayList<Choice>> choices = new ArrayList<ArrayList<Choice>>();;
-	        	for(int i = 0; i < 6; i++){
-	        		Question[] pair = questionsDatabase.getRandomPair(Chapter.values()[i]);
+	        	for(int i = 1; i < 7; i++){
+	        		Question[] pair = questionsDatabase.getRandomPair(i);
 	        		questions.add(pair[0]);
 	        		questions.add(pair[1]);
 	        		choices.add(choicesDatabase.getChoicesForQuestion(pair[0].getQuestionId()));
 	        		choices.add(choicesDatabase.getChoicesForQuestion(pair[1].getQuestionId()));
 	        	}
 	    		request.setAttribute("randExam", exam);
-	            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/exam.jsp");
+	            RequestDispatcher dispatcher = request.getRequestDispatcher("exam.jsp");
 	            dispatcher.forward(request, response);
 	          } catch (Exception ex) {
-	        	  System.out.println("exception in questioncontroller:");
+	        	  System.out.println("exception in ExamServlet");
 	            ex.printStackTrace();
 	          }
 	}

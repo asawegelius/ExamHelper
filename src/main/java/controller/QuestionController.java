@@ -1,6 +1,5 @@
 package controller;
 
-import model.Chapter;
 import model.Question;
 import dao.IExamHelperDao;
 import dao.IQuestionDao;
@@ -30,7 +29,7 @@ public class QuestionController {
 		this.database = database;
 	}
 	
-	public Question[] getQuestionsForChapter(Chapter chapter){		
+	public Question[] getQuestionsForChapter(long chapter){		
 		return database.getRandomPair(chapter);
 	}
 

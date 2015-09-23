@@ -4,6 +4,10 @@ import model.Chapter;
 import model.Question;
 
 public class QuestionCollection extends ExamHelperCollectionDao<Question, Long> implements IQuestionDao<Question, Long> {
+	
+	public QuestionCollection(){
+		populateDatabase();
+	}
 
 	@Override
 	public void update(Question entity) {
@@ -70,11 +74,19 @@ public class QuestionCollection extends ExamHelperCollectionDao<Question, Long> 
 	}
 
 
-	public Question[] getRandomPair(Chapter chapter) {
+	
+	public Question[] getRandomPair(long i) {
+		System.out.println("number of entries: " + database.size());
 		Question[] pairs = new Question[2];
 		int picked = 0;
 		for(Question q : database){
-			if(q.getChapter().equals(chapter)){
+			System.out.println(q.getChapter().name());
+
+			System.out.println(q.getChapter().getChapterNo());
+			System.out.println(Chapter.values()[(int)i]);
+			if(q.getChapter().getChapterNo() == i){
+
+				System.out.println("added question");
 				pairs[picked] = q;
 				picked ++;
 			}
