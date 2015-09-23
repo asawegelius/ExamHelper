@@ -13,6 +13,7 @@ import dao.ChoiceCollection;
 import dao.IChoiceDao;
 import dao.IQuestionDao;
 import dao.QuestionCollection;
+import model.Exam;
 import model.Question;
 import model.Choice;
 
@@ -53,7 +54,7 @@ public class ExamServlet extends HttpServlet {
 		try {
 			ArrayList<Question> questions = new ArrayList<Question>();
 			ArrayList<ArrayList<Choice>> choices = new ArrayList<ArrayList<Choice>>();
-			;
+			Exam exam = new Exam();
 			for (int i = 1; i < 7; i++) {
 				Question[] pair = questionsDatabase.getRandomPair(i);
 				questions.add(pair[0]);
@@ -61,7 +62,9 @@ public class ExamServlet extends HttpServlet {
 				choices.add(choicesDatabase.getChoicesForQuestion(pair[0].getQuestionId()));
 				choices.add(choicesDatabase.getChoicesForQuestion(pair[1].getQuestionId()));
 			}
-			request.setAttribute("questions", questions);
+			exam.setQuestions(questions);
+			exam.setChoices(choices);
+			request.setAttribute("exam", exam);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("exam.jsp");
 			dispatcher.forward(request, response);
 		} catch (Exception ex) {
