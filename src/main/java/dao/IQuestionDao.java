@@ -5,8 +5,6 @@ package dao;
 
 import java.io.Serializable;
 
-import model.Chapter;
-
 /**
  * @author Asa
  *
