@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="model.Question" import="model.Exam"
 	import="model.Choice" import="java.util.ArrayList"%>
+	
 <%
 	Exam exam = (Exam) request.getAttribute("exam");
 	Question q;
@@ -13,23 +14,25 @@
 	chapter:
 	<%
 	out.print(q.getChapter());
-		}
+		
 %>
 </p>
+<% }%>
 <p>
 	question:
 	<%
 	out.print(q.getName());
 %>
 </p>
-
-<ul class="choices">
+<div class="radio">
+<% 
+		out.print(q.getDescription());%>
+<ul class="radio">
 	<%
-		out.print(q.getDescription());
 			ArrayList<Choice> choices = exam.getChoices().get(i);
 			for (int j = 0; j < choices.size(); j++) {
 	%>
-	<li><label> <input data-key="a" type="radio">
+	<li ><label> <input name="<% out.print(q.getQuestionId()); %>" id="<% out.print("id" + choices.get(j).getChoiceId()); %>" type="radio">
 			<%
 				out.print(choices.get(j).getDescription());
 			%>
@@ -38,6 +41,5 @@
 		}
 	%>
 </ul>
-<%
-	}
-%>
+</div>
+<%}%>

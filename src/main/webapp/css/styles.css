@@ -3,14 +3,20 @@
 body {
   margin: 0;
   padding: 0;
-  background: #ccc;
+  color: #005566;
+  background: #f2f2f2;
+}
+/*##################### start radio button styling ######################################################################*/
+ul.radio li{
+  list-style-type: none;
 }
 
 
+/*###################### end radio button styling ######################################################################*/
  /*###################### start nav bar styling #########################################################################*/
 .nav ul {
   list-style: none;
-  background-color: #444;
+  background-color: #1d6e81;
   text-align: center;
   padding: 0;
   margin: 0;
@@ -20,7 +26,7 @@ body {
   font-size: 1.2em;
   line-height: 40px;
   height: 40px;
-  border-bottom: 1px solid #888;
+  border-bottom: 1px solid #1d6e81;
 }
  
 .nav a {
@@ -31,12 +37,12 @@ body {
 }
  
 .nav a:hover {
-  background-color: #005f5f;
+  background-color: #005566;
 }
  
 .nav a.active {
   background-color: #fff;
-  color: #444;
+  color: #1d6e81;
   cursor: default;
 }
  
