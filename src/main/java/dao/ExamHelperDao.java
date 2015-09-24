@@ -4,14 +4,15 @@
 package dao;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.*;
 import java.lang.reflect.*;
+import java.sql.*;
 
 /**
  * @author Mariana
  *
  */
-public abstract class ExamHelperDao<T extends Serializable, ID> implements IExamHelperDao<T, ID> {
+public abstract class ExamHelperDao<T extends Serializable, Long> implements IExamHelperDao<T, Long> {
 
 	private Class<T> type;
 	
@@ -20,24 +21,75 @@ public abstract class ExamHelperDao<T extends Serializable, ID> implements IExam
 		type = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
 	}
 	
-	public T findByID(ID id) {
+	public abstract T findByID(Long id);
+	/*	String table = type.getSimpleName();
+		//I should have a variable which stores the name of the ID from each table
+		String query = "SELECT * from " + table + " WHERE pk_qid = " + id;
+		Connection con = DBConnect.getConnection();
+		try{
+			Statement s = con.createStatement();
+			ResultSet rs = s.executeQuery(query);
+			if(rs != null){
+				while(rs.next()) {
+					//price = rs.getDouble("cottagePrice");
+				}
+			}
+			s.close();
+		}
+		catch (SQLException e) {
+	            System.err.println("in findByID " + e.getMessage());
+	        } */
 		// TODO Auto-generated method stub
-		return null;
-	}
 
-	public T findByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	public List<T> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+	public abstract T findByName(String name) ;
+
+	public ArrayList<T> getAll() {
+		ArrayList<T> dates = new  ArrayList<T>();
+		String table = type.getSimpleName();
+		String query = "SELECT * from " + table;
+		Connection con = DBConnect.getConnection();
+		try{
+			Statement s = con.createStatement();
+			ResultSet rs = s.executeQuery(query);
+			if(rs != null){
+				int i=0;
+				while(rs.next()) {
+					dates.get(i);
+					i++;
+				}
+			}
+			s.close();
+		}
+		catch (SQLException e) {
+	            System.err.println("in getAll " + e.getMessage());
+	        }
+		return dates ;
 	}
 
 	public int count() {
+		int i=0;
+		String entity = type.getSimpleName();
+		String query = "SELECT * from " + entity;
+		Connection con = DBConnect.getConnection();
+		try{
+			Statement s = con.createStatement();
+			ResultSet rs = s.executeQuery(query);
+			if(rs != null){
+				while(rs.next()) {
+					i++;
+				}
+			}
+			
+			s.close();
+		}
+		catch (SQLException e) {
+	            System.err.println("in count " + e.getMessage());
+	        }
+		return i;
+		
 		// TODO Auto-generated method stub
-		return 0;
+		
 	}
 
 	public void save(T entity) {

@@ -28,7 +28,7 @@ private static Connection con = null;
 			String url = "jdbc:mysql://localhost:3306/ExamHelper";
 			String user = "ExamUser";
 			String pw = "ExamHelperPass";
-			//I have used some fiction username and password today, maybe tomorrow we can make to be the same on each computer
+			//I have used fiction username and password today, maybe tomorrow we can make to be the same on each computer
 			DBConnect.con = DriverManager.getConnection(url, user, pw);		
 		}
 		catch (ClassNotFoundException e){		
