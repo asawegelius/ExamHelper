@@ -12,6 +12,7 @@ import java.sql.*;
  * @author Mariana
  *
  */
+@SuppressWarnings("hiding")
 public abstract class ExamHelperDao<T extends Serializable, Long> implements IExamHelperDao<T, Long> {
 
 	private Class<T> type;
@@ -69,8 +70,8 @@ public abstract class ExamHelperDao<T extends Serializable, Long> implements IEx
 
 	public int count() {
 		int i=0;
-		String entity = type.getSimpleName();
-		String query = "SELECT * from " + entity;
+		String table = type.getSimpleName();
+		String query = "SELECT * from " + table;
 		Connection con = DBConnect.getConnection();
 		try{
 			Statement s = con.createStatement();
@@ -87,34 +88,18 @@ public abstract class ExamHelperDao<T extends Serializable, Long> implements IEx
 	            System.err.println("in count " + e.getMessage());
 	        }
 		return i;
-		
-		// TODO Auto-generated method stub
-		
+			// TODO Auto-generated method stub
 	}
 
-	public void save(T entity) {
-		// TODO Auto-generated method stub
-		
-	}
+	public abstract void save(T entity); 
 
-	public void update(T entity) {
-		// TODO Auto-generated method stub
-		
-	}
+	public abstract void update(T entity); 
 
-	public void saveOrUpdate(T entity) {
-		// TODO Auto-generated method stub
-		
-	}
+	public abstract void saveOrUpdate(T entity); 
 
-	public void delete(T entity) {
-		// TODO Auto-generated method stub
-		
-	}
+	public abstract void delete(T entity); 
 
-	public void delete(ID id) {
-		// TODO Auto-generated method stub
-		
-	}
+	public abstract void delete(Long id); 
+
 
 }

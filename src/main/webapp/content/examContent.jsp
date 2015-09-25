@@ -3,6 +3,8 @@
 	pageEncoding="ISO-8859-1" import="model.Question" import="model.Exam"
 	import="model.Choice" import="java.util.ArrayList"%>
 	
+	<form action="result.jsp" method="post">
+	
 <%
 	Exam exam = (Exam) request.getAttribute("exam");
 	Question q;
@@ -43,3 +45,6 @@
 </ul>
 </div>
 <%}%>
+
+<input type="submit" value="Submit">
+</form>
