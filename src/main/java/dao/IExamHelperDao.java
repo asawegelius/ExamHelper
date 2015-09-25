@@ -7,6 +7,8 @@ package dao;
 import java.io.Serializable;
 import java.util.List;
 
+import model.Answer;
+
 /**
  * Generic repository providing basic CRUD operations
  * 
@@ -89,4 +91,5 @@ public interface IExamHelperDao<T extends Serializable, ID> {
 	 *            the primar key of the entity to deletee
 	 */
 	void delete(ID id);
+
 }

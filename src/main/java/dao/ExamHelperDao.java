@@ -12,6 +12,7 @@ import java.sql.*;
  * @author Mariana
  *
  */
+@SuppressWarnings("hiding")
 public abstract class ExamHelperDao<T extends Serializable, Long> implements IExamHelperDao<T, Long> {
 
 	private Class<T> type;
@@ -112,7 +113,7 @@ public abstract class ExamHelperDao<T extends Serializable, Long> implements IEx
 		
 	}
 
-	public void delete(ID id) {
+	public void delete(long id) {
 		// TODO Auto-generated method stub
 		
 	}

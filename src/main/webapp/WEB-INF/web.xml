@@ -15,6 +15,12 @@
  	<description></description>
  	<servlet-class>controller.ExamServlet</servlet-class>
  </servlet>
+ <servlet>
+ 	<servlet-name>ResultServlet</servlet-name>
+ 	<display-name>ResultServlet</display-name>
+ 	<description></description>
+ 	<servlet-class>controller.ResultServlet</servlet-class>
+ </servlet>
  <servlet-mapping>
  	<servlet-name>QuestionServlet</servlet-name>
  	<url-pattern>/QuestionServlet</url-pattern>
@@ -22,6 +28,10 @@
  <servlet-mapping>
  	<servlet-name>ExamServlet</servlet-name>
  	<url-pattern>/ExamServlet</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+ 	<servlet-name>ResultServlet</servlet-name>
+ 	<url-pattern>/ResultServlet</url-pattern>
  </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
