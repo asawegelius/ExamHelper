@@ -112,7 +112,7 @@ public abstract class ExamHelperDao<T extends Serializable, Long> implements IEx
 		
 	}
 
-	public void delete(ID id) {
+	public void delete(Long id) {
 		// TODO Auto-generated method stub
 		
 	}
