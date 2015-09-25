@@ -100,4 +100,5 @@ public abstract class ExamHelperDao<T extends Serializable, Long> implements IEx
 
 	public abstract void delete(Long id); 
 
+
 }
