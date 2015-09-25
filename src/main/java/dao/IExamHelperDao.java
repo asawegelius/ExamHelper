@@ -5,7 +5,8 @@ package dao;
 
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.ArrayList;
+
 
 /**
  * Generic repository providing basic CRUD operations
@@ -43,7 +44,7 @@ public interface IExamHelperDao<T extends Serializable, ID> {
 	 * 
 	 * @return a list of all entities
 	 */
-	List<T> getAll();
+	ArrayList<T> getAll();
 
 
 	int count();
