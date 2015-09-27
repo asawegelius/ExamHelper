@@ -17,7 +17,7 @@ public class QuestionDao implements IQuestionDao<Question , Long> {
 
 	public Question findByID(Long id) {
 		Question que = new Question();
-		String query = "SELECT * from question WHERE pk_qid = '" + id + "'";
+		String query = "SELECT * from `examhelper`.`pk_qid` = '" + id + "'";
 		Connection con = DBConnect.getConnection();
 		try{
 			Statement s = con.createStatement();
@@ -43,7 +43,7 @@ public class QuestionDao implements IQuestionDao<Question , Long> {
 
 	public Question findByName(String name) {
 		Question que = new Question();
-		String query = "SELECT * from question WHERE name = '" + name + "'";
+		String query = "SELECT * from `examhelper`.`question` WHERE name = '" + name + "'";
 		Connection con = DBConnect.getConnection();
 		try{
 			Statement s = con.createStatement();
@@ -118,7 +118,22 @@ public class QuestionDao implements IQuestionDao<Question , Long> {
 	}
 
 	public void delete(Question entity) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub DELETE
+		
+		//not working
+		String query = "DELETE FROM `examhelper`.`question`	WHERE `pk_qid`= " +entity.getQuestionId()+" , `name`='" + entity.getName() + "', `description`='" + 
+				entity.getDescription() + "', `fk_chaid_answer`" + entity.getChapter()+ " WHERE `pk_qid` = " +entity.getQuestionId() + ";";
+		System.out.println(query);
+		Connection con = DBConnect.getConnection();	
+		try{
+			Statement s = con.createStatement();
+			s.execute(query);
+			
+			s.close();
+		}
+		catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
 		
 	}
 

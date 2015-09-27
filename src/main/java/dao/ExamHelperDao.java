@@ -48,7 +48,7 @@ public abstract class ExamHelperDao<T extends Serializable, Long> implements IEx
 	public ArrayList<T> getAll() {
 		ArrayList<T> dates = new  ArrayList<T>();
 		String table = type.getSimpleName();
-		String query = "SELECT * from " + table;
+		String query = "SELECT * from `examhelper`.`"+ table+"`" ;
 		Connection con = DBConnect.getConnection();
 		try{
 			Statement s = con.createStatement();
@@ -71,7 +71,7 @@ public abstract class ExamHelperDao<T extends Serializable, Long> implements IEx
 	public int count() {
 		int i=0;
 		String table = type.getSimpleName();
-		String query = "SELECT * from " + table;
+		String query = "SELECT * from `examhelper`.`"+ table+"`" ;
 		Connection con = DBConnect.getConnection();
 		try{
 			Statement s = con.createStatement();
