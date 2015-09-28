@@ -19,6 +19,11 @@ public class TestCollection {
 		for(int i = 0; i < choices.size(); i++){
 			System.out.println(choices.get(i).getDescription());
 		}
+		AnswerCollection answers = new AnswerCollection();
+		for(Question q: controller.getAll()){
+			System.out.println("answer for question:" + q.getQuestionId());
+			System.out.println(answers.answerForQuestion(q.getQuestionId()).getAnswerId());
+		}
 	}
 
 }

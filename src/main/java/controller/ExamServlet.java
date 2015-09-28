@@ -8,12 +8,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.AnswerCollection;
 import dao.ChoiceCollection;
 import dao.IAnswerDao;
 import dao.IChoiceDao;
-import dao.IExamHelperDao;
 import dao.IQuestionDao;
 import dao.QuestionCollection;
 import model.Exam;
@@ -73,7 +73,9 @@ public class ExamServlet extends HttpServlet {
 			}
 			exam.setQuestions(questions);
 			exam.setChoices(choices);
-			request.setAttribute("exam", exam);
+			exam.setAnswers(answers);
+			HttpSession session = request.getSession();
+			session.setAttribute("exam", exam);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("exam.jsp");
 			dispatcher.forward(request, response);
 		} catch (Exception ex) {

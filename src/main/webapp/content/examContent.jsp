@@ -6,7 +6,7 @@
 	<form action="result.jsp" method="post">
 	
 <%
-	Exam exam = (Exam) request.getAttribute("exam");
+	Exam exam = (Exam) request.getSession().getAttribute("exam");
 	Question q;
 	for (int i = 0; i < exam.getQuestions().size(); i++) {
 		q = exam.getQuestions().get(i);
@@ -34,7 +34,7 @@
 			ArrayList<Choice> choices = exam.getChoices().get(i);
 			for (int j = 0; j < choices.size(); j++) {
 	%>
-	<li ><label> <input name="<% out.print(q.getQuestionId()); %>" id="<% out.print("id" + choices.get(j).getChoiceId()); %>" type="radio">
+	<li ><label> <input name="<% out.print(q.getQuestionId()); %>" value="<% out.print("id" + choices.get(j).getChoiceId()); %>" type="radio">
 			<%
 				out.print(choices.get(j).getDescription());
 			%>
