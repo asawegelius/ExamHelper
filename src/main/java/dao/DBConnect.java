@@ -25,7 +25,7 @@ private static Connection con = null;
 		try{		
 			Class.forName("com.mysql.jdbc.Driver");		
 			
-			String url = "jdbc:mysql://localhost:3306/ExamHelper";
+			String url = "jdbc:mysql://localhost/examhelper";
 			String user = "ExamUser";
 			String pw = "ExamHelperPass";
 			//I have used fiction username and password today, maybe tomorrow we can make to be the same on each computer
