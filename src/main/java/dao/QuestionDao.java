@@ -5,6 +5,7 @@ package dao;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Random;
 
 import model.Chapter;
 import model.Question;
@@ -13,8 +14,9 @@ import model.Question;
  * @author Mariana
  *
  */
-public class QuestionDao implements IQuestionDao<Question , Long> {
+public class QuestionDao extends ExamHelperDao<Question , Long> implements IQuestionDao<Question , Long> {
 
+	
 	public Question findByID(Long id) {
 		Question que = new Question();
 		String query ="SELECT * from `examhelper`.`question` WHERE `question`.`pk_qid` = '" + id + "'";
@@ -67,15 +69,6 @@ public class QuestionDao implements IQuestionDao<Question , Long> {
 		return que;
 	}
 
-	public ArrayList<Question> getAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public int count() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	public void save(Question entity) {
 		String query = "INSERT INTO `examhelper`.`question` (`pk_qid`, `name`, `description`, `fk_chaid_answer`) VALUES (" +
@@ -147,9 +140,6 @@ public class QuestionDao implements IQuestionDao<Question , Long> {
 		catch (SQLException e) {
 			System.err.println(e.getMessage());
 		}
-		
-		// TODO Auto-generated method stub
-		
 	}
 
 	public void delete(Question entity) {
@@ -187,8 +177,40 @@ public class QuestionDao implements IQuestionDao<Question , Long> {
 	}
 
 	public Question[] getRandomPair(long i) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Question> allQuestions = getAll();
+		Question[] pair = new Question[2];
+		Random random = new Random();
+		int first = random.nextInt(allQuestions.size());
+		int seccond = random.nextInt(allQuestions.size());
+		while(seccond == first){
+			seccond = random.nextInt(allQuestions.size());
+		}
+		pair[0] =  allQuestions.get(first);
+		pair[1] = allQuestions.get(seccond);
+		return pair;
+	}
+
+	@Override
+	public ArrayList<Question> getAll() {
+		{
+			ArrayList<Question> allQuestions = new  ArrayList<Question>();
+			String query = "SELECT * from `examhelper`.`question`" ;
+			Connection con = DBConnect.getConnection();
+			try{
+				Statement s = con.createStatement();
+				ResultSet rs = s.executeQuery(query);
+				if(!(!rs.isBeforeFirst() && rs.getRow() == 0)){
+					while(rs.next()) {
+						allQuestions.add(new Question(rs.getLong("pk_qid"), Chapter.values()[(int)rs.getLong("fk_chaid_answer")], rs.getString("name"), rs.getString("description")));
+					}
+				}
+				s.close();
+			}
+			catch (SQLException e) {
+		            System.err.println("in getAll " + e.getMessage());
+		        }
+			return allQuestions ;
+		}
 	}
 
 		

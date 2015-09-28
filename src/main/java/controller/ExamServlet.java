@@ -16,6 +16,7 @@ import dao.IAnswerDao;
 import dao.IChoiceDao;
 import dao.IQuestionDao;
 import dao.QuestionCollection;
+import dao.QuestionDao;
 import model.Exam;
 import model.Question;
 import model.Choice;
@@ -35,7 +36,7 @@ public class ExamServlet extends HttpServlet {
 	 */
 	public ExamServlet() {
 		super();
-		this.questionsDatabase = new QuestionCollection();
+		this.questionsDatabase = new QuestionDao();
 		this.choicesDatabase = new ChoiceCollection();
 		this.answersDatabase = new AnswerCollection();
 	}

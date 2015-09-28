@@ -45,28 +45,7 @@ public abstract class ExamHelperDao<T extends Serializable, Long> implements IEx
 
 	public abstract T findByName(String name) ;
 
-	public ArrayList<T> getAll() {
-		ArrayList<T> dates = new  ArrayList<T>();
-		String table = type.getSimpleName();
-		String query = "SELECT * from `examhelper`.`"+ table+"`" ;
-		Connection con = DBConnect.getConnection();
-		try{
-			Statement s = con.createStatement();
-			ResultSet rs = s.executeQuery(query);
-			if(rs != null){
-				int i=0;
-				while(rs.next()) {
-					dates.get(i);
-					i++;
-				}
-			}
-			s.close();
-		}
-		catch (SQLException e) {
-	            System.err.println("in getAll " + e.getMessage());
-	        }
-		return dates ;
-	}
+	public abstract ArrayList<T> getAll(); 
 
 	public int count() {
 		int i=0;

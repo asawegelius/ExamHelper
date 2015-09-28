@@ -18,7 +18,7 @@ public class DBConnectTest extends TestCase {
 
 		String dbUrl = "jdbc:mysql://localhost/examhelper";
 	    String dbClass = "com.mysql.jdbc.Driver";
-	    String query = "SELECT * from `examhelper`.`question`";
+	    String query = "Select distinct(table_name) from INFORMATION_SCHEMA.TABLES";
 	    String username = "ExamUser";
 	    String password = "ExamHelperPass";
 	    try {

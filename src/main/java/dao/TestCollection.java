@@ -1,8 +1,5 @@
 package dao;
 
-import java.util.ArrayList;
-
-import model.Choice;
 import model.Question;
 
 public class TestCollection {
@@ -12,18 +9,10 @@ public class TestCollection {
 	}
 
 	public static void main(String[] args) {
-		QuestionCollection controller = new QuestionCollection();
+		QuestionDao controller = new QuestionDao();
 		Question[] pair = controller.getRandomPair(0);
-		ChoiceCollection choiceController = new ChoiceCollection();
-		ArrayList<Choice> choices = choiceController.getChoicesForQuestion((long) 8);
-		for(int i = 0; i < choices.size(); i++){
-			System.out.println(choices.get(i).getDescription());
-		}
-		AnswerCollection answers = new AnswerCollection();
-		for(Question q: controller.getAll()){
-			System.out.println("answer for question:" + q.getQuestionId());
-			System.out.println(answers.answerForQuestion(q.getQuestionId()).getAnswerId());
-		}
+		System.out.println(pair[0].getDescription());
+		System.out.println(pair[1].getDescription());
 	}
 
 }
