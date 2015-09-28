@@ -114,7 +114,7 @@ public class QuestionDao implements IQuestionDao<Question , Long> {
 
 	public void saveOrUpdate(Question entity) {
 		//if the entity is already in the database update it
-		String query = "SELECT * from `examhelper`.`pk_qid` = '" + entity.getQuestionId() + "'";
+		String query = "SELECT * from `examhelper`.`question` WHERE `pk_qid`= '" + entity.getQuestionId() + "'";
 		Connection con = DBConnect.getConnection();
 		try{
 			Statement s = con.createStatement();
