@@ -12,7 +12,7 @@ public class ChoiceDao implements IChoiceDao<Choice, Long> {
 
 	public Choice findByID(Long id) {
 		Choice cho = new Choice();
-		String query = "SELECT * from question WHERE pk_choid = '" + id + "'";
+		String query = "SELECT * from `examhelper`.`choice` WHERE pk_choid = '" + id + "'";
 		Connection con = DBConnect.getConnection();
 		try{
 			Statement s = con.createStatement();
@@ -36,6 +36,26 @@ public class ChoiceDao implements IChoiceDao<Choice, Long> {
 	}
 
 	public Choice findByName(String name) {
+		Choice cho = new Choice();
+		String query = "SELECT * from `examhelper`.`choice` WHERE description = '" + name + "'";
+		Connection con = DBConnect.getConnection();
+		try{
+			Statement s = con.createStatement();
+			ResultSet rs = s.executeQuery(query);
+			if(rs != null){
+				while(rs.next()) {
+					long ch_nb = rs.getLong("fk_qid_choid");
+					cho.setChoiceId(ch_nb);
+					cho.setDescription(rs.getString("description"));
+					cho.setQuestionId(rs.getLong("fk_qid_choice"));
+				}
+			}
+				s.close();
+			}
+			catch (SQLException e) {
+		            System.err.println("in findByName " + e.getMessage());
+				
+				}	
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -51,11 +71,37 @@ public class ChoiceDao implements IChoiceDao<Choice, Long> {
 	}
 
 	public void save(Choice entity) {
+		String query = "INSERT INTO `examhelper`.`choice` (`pk_choid`, `description`, `fk_qid_choice`) VALUES (" +
+				entity.getChoiceId() + ", '" + entity.getDescription() + "', " + entity.getQuestionId()+ ")";
+		System.out.println(query);
+		Connection con = DBConnect.getConnection();	
+		try{
+			Statement s = con.createStatement();
+			s.execute(query);
+			
+			s.close();
+		}
+		catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }		
 		// TODO Auto-generated method stub
 		
 	}
 
 	public void update(Choice entity) {
+		String query = "UPDATE `examhelper`.`choice` SET `pk_choid` = " +entity.getChoiceId()+" , `description`='" + entity.getDescription() + "', " + 
+				 "', `fk_qid_choice`" + entity.getQuestionId()+ " WHERE `pk_choid` = " +entity.getChoiceId() + ";";
+		System.out.println(query);
+		Connection con = DBConnect.getConnection();	
+		try{
+			Statement s = con.createStatement();
+			s.execute(query);
+			
+			s.close();
+		}
+		catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
 		// TODO Auto-generated method stub
 		
 	}
