@@ -34,7 +34,7 @@
 			ArrayList<Choice> choices = exam.getChoices().get(i);
 			for (int j = 0; j < choices.size(); j++) {
 	%>
-	<li ><label> <input name="<% out.print(q.getQuestionId()); %>" value="<% out.print("id" + choices.get(j).getChoiceId()); %>" type="radio">
+	<li ><label> <input name="<% out.print("id" + q.getQuestionId()); %>" value="<% out.print("id" + choices.get(j).getChoiceId()); %>" type="radio">
 			<%
 				out.print(choices.get(j).getDescription());
 			%>
