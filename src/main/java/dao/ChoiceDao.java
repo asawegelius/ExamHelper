@@ -107,17 +107,74 @@ public class ChoiceDao implements IChoiceDao<Choice, Long> {
 	}
 
 	public void saveOrUpdate(Choice entity) {
+		String query = "SELECT * from `examhelper`.`choice` WHERE `pk_choid` = '" + entity.getChoiceId() + "'";
+		Connection con = DBConnect.getConnection();
+		try{
+			Statement s = con.createStatement();
+			ResultSet rs = s.executeQuery(query);
+			if(rs != null){
+				String query1 = "UPDATE `examhelper`.`choice` SET `pk_choid` = " +entity.getChoiceId()+" , `description`='" + entity.getDescription() + "', " + 
+						 "', `fk_qid_choice`" + entity.getQuestionId()+ " WHERE `pk_choid` = " +entity.getChoiceId() + ";";
+				System.out.println(query1);
+				try{
+					s.execute(query1);
+				}
+				catch (SQLException e) {
+					System.err.println(e.getMessage());
+				}
+			}
+			else
+			{
+				String query2 = "INSERT INTO `examhelper`.`choice` (`pk_choid`, `description`, `fk_qid_choice`) VALUES (" +
+						entity.getChoiceId() + ", '" + entity.getDescription() + "', " + entity.getQuestionId()+ ")";
+				System.out.println(query2);
+				try{
+					s.execute(query2);
+				}
+				catch (SQLException e) {
+		            System.err.println(e.getMessage());
+		        }
+			}
+			s.close();
+		}
+		catch (SQLException e) {
+			System.err.println(e.getMessage());
+		}
 		// TODO Auto-generated method stub
 		
 	}
 
 	public void delete(Choice entity) {
 		// TODO Auto-generated method stub
+		String query = "DELETE FROM `examhelper`.`choice` WHERE `pk_qid`= " +entity.getChoiceId()+" ;";
+		System.out.println(query);
+		Connection con = DBConnect.getConnection();	
+		try{
+			Statement s = con.createStatement();
+			s.execute(query);
+			
+			s.close();
+		}
+		catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
 		
 	}
 
 	public void delete(Long id) {
 		// TODO Auto-generated method stub
+		String query = "DELETE FROM `examhelper`.`choice` WHERE `pk_qid`= " +id+" ;";
+		System.out.println(query);
+		Connection con = DBConnect.getConnection();	
+		try{
+			Statement s = con.createStatement();
+			s.execute(query);
+			
+			s.close();
+		}
+		catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
 		
 	}
 

@@ -81,25 +81,107 @@ public class AnswerDao implements IAnswerDao<Answer, Long> {
 
 	public void save(Answer entity) {
 		// TODO Auto-generated method stub
-		
+		String query = "INSERT INTO `examhelper`.`answer` (`pk_aid`, `fk_qid_answer`, `fk_choid_answer`, `description`) VALUES (" +
+				entity.getAnswerId() + ", "+entity.getQuestionId() +", "+ entity.getChoiceId()+"'" + entity.getDescription() + "')";
+		System.out.println(query);
+		Connection con = DBConnect.getConnection();	
+		try{
+			Statement s = con.createStatement();
+			s.execute(query);
+			
+			s.close();
+		}
+		catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }		
 	}
 
 	public void update(Answer entity) {
+		String query = "UPDATE `examhelper`.`answer` SET `pk_aid` = " +entity.getAnswerId()+" , `description`='" + entity.getDescription() + "', " + 
+				 "', `fk_qid_answer` =" + entity.getQuestionId()+",`fk_choid_answer` ="+ entity.getChoiceId()+ " WHERE `pk_aid` = " +entity.getAnswerId() + ";";
+		System.out.println(query);
+		Connection con = DBConnect.getConnection();	
+		try{
+			Statement s = con.createStatement();
+			s.execute(query);
+			
+			s.close();
+		}
+		catch (SQLException e) {
+           System.err.println(e.getMessage());
+       }
 		// TODO Auto-generated method stub
 		
 	}
 
 	public void saveOrUpdate(Answer entity) {
+		String query = "SELECT * from `examhelper`.`answer` WHERE `pk_aid` = '" + entity.getAnswerId() + "'";
+		Connection con = DBConnect.getConnection();
+		try{
+			Statement s = con.createStatement();
+			ResultSet rs = s.executeQuery(query);
+			if(rs != null){
+				String query1 = "UPDATE `examhelper`.`answer` SET `pk_aid` = " +entity.getAnswerId()+" , `description`='" + entity.getDescription() + "', " + 
+						 "', `fk_qid_answer` =" + entity.getQuestionId()+",`fk_choid_answer` ="+ entity.getChoiceId()+ " WHERE `pk_aid` = " +entity.getAnswerId() + ";";
+				System.out.println(query1);
+				try{
+					s.execute(query1);
+				}
+				catch (SQLException e) {
+					System.err.println(e.getMessage());
+				}
+			}
+			else
+			{
+				String query2 = "INSERT INTO `examhelper`.`answer` (`pk_aid`, `fk_qid_answer`, `fk_choid_answer`, `description`) VALUES (" +
+						entity.getAnswerId() + ", "+entity.getQuestionId() +", "+ entity.getChoiceId()+"'" + entity.getDescription() + "')";
+				System.out.println(query2);
+				try{
+					s.execute(query2);
+				}
+				catch (SQLException e) {
+		            System.err.println(e.getMessage());
+		        }
+			}
+			s.close();
+		}
+		catch (SQLException e) {
+			System.err.println(e.getMessage());
+		}
 		// TODO Auto-generated method stub
 		
 	}
 
 	public void delete(Answer entity) {
+		String query = "DELETE FROM `examhelper`.`answer` WHERE `pk_qid`= " +entity.getAnswerId()+" ;";
+		System.out.println(query);
+		Connection con = DBConnect.getConnection();	
+		try{
+			Statement s = con.createStatement();
+			s.execute(query);
+			
+			s.close();
+		}
+		catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
 		// TODO Auto-generated method stub
 		
 	}
 
 	public void delete(Long id) {
+		String query = "DELETE FROM `examhelper`.`answer` WHERE `pk_qid`= " +id+" ;";
+		System.out.println(query);
+		Connection con = DBConnect.getConnection();	
+		try{
+			Statement s = con.createStatement();
+			s.execute(query);
+			
+			s.close();
+		}
+		catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
 		// TODO Auto-generated method stub
 		
 	}
