@@ -24,7 +24,6 @@ private static Connection con = null;
 	private static void initConnection(){			
 		try{		
 			Class.forName("com.mysql.jdbc.Driver");		
-			
 			String url = "jdbc:mysql://localhost/examhelper";
 			String user = "ExamUser";
 			String pw = "ExamHelperPass";
