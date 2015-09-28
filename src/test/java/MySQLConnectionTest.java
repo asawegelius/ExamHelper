@@ -11,9 +11,9 @@ public class MySQLConnectionTest extends TestCase {
     public void testConnect() {
     String dbUrl = "jdbc:mysql://localhost/examhelper";
     String dbClass = "com.mysql.jdbc.Driver";
-    String query = "Select distinct(question) from INFORMATION_SCHEMA.TABLES";
-    String username = "root";
-    String password = "";
+    String query = "SELECT * from `examhelper`.`question`";
+    String username = "ExamUser";
+    String password = "ExamHelperPass";
     try {
 
         Class.forName(dbClass);
@@ -22,8 +22,8 @@ public class MySQLConnectionTest extends TestCase {
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
         while (resultSet.next()) {
-        String tableName = resultSet.getString(1);
-        System.out.println("Table name : " + tableName);
+        String resultName = resultSet.getString(1);
+        System.out.println("Result : " + resultName);
         }
         connection.close();
     } catch (ClassNotFoundException e) {
