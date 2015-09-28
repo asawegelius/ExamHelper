@@ -16,7 +16,7 @@ public class AnswerDao implements IAnswerDao<Answer, Long> {
 	    `answer`.`fk_qid_answer`,
 	    `answer`.`fk_choid_answer`,
 	    `answer`.`description`*/
-		String query = "SELECT * from `examhelper`.`answer` WHERE pk_aid = '" + id + "'";
+		String query = "SELECT * from `examhelper`.`answer` WHERE `pk_aid` = '" + id + "'";
 		Connection con = DBConnect.getConnection();
 		try{
 			Statement s = con.createStatement();
@@ -39,7 +39,7 @@ public class AnswerDao implements IAnswerDao<Answer, Long> {
 				}	
 		
 		// TODO Auto-generated method stub
-		return null;
+		return answ;
 	}
 
 	public Answer findByName(String name) {
@@ -66,7 +66,7 @@ public class AnswerDao implements IAnswerDao<Answer, Long> {
 				
 				}	
 		// TODO Auto-generated method stub
-		return null;
+		return answ;
 	}
 
 	public ArrayList<Answer> getAll() {

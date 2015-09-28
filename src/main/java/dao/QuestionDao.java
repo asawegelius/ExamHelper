@@ -17,7 +17,7 @@ public class QuestionDao implements IQuestionDao<Question , Long> {
 
 	public Question findByID(Long id) {
 		Question que = new Question();
-		String query = "SELECT * from `examhelper`.`pk_qid` = '" + id + "'";
+		String query ="SELECT * from `examhelper`.`question` WHERE `question`.`pk_qid` = '" + id + "'";
 		Connection con = DBConnect.getConnection();
 		try{
 			Statement s = con.createStatement();
@@ -38,7 +38,7 @@ public class QuestionDao implements IQuestionDao<Question , Long> {
 				
 				}
 		// TODO Auto-generated method stub
-		return null;
+		return que;
 	}
 
 	public Question findByName(String name) {
@@ -64,7 +64,7 @@ public class QuestionDao implements IQuestionDao<Question , Long> {
 				
 				}
 		// TODO Auto-generated method stub
-		return null;
+		return que;
 	}
 
 	public ArrayList<Question> getAll() {

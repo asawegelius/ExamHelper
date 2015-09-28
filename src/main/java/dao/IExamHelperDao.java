@@ -8,8 +8,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 
-import model.Answer;
-
 /**
  * Generic repository providing basic CRUD operations
  * 

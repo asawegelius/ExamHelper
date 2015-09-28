@@ -12,7 +12,7 @@ public class ChoiceDao implements IChoiceDao<Choice, Long> {
 
 	public Choice findByID(Long id) {
 		Choice cho = new Choice();
-		String query = "SELECT * from `examhelper`.`choice` WHERE pk_choid = '" + id + "'";
+		String query = "SELECT * from `examhelper`.`choice` WHERE `pk_choid` = '" + id + "'";
 		Connection con = DBConnect.getConnection();
 		try{
 			Statement s = con.createStatement();
@@ -32,7 +32,7 @@ public class ChoiceDao implements IChoiceDao<Choice, Long> {
 				
 				}	
 		// TODO Auto-generated method stub
-		return null;
+		return cho;
 	}
 
 	public Choice findByName(String name) {
@@ -57,7 +57,7 @@ public class ChoiceDao implements IChoiceDao<Choice, Long> {
 				
 				}	
 		// TODO Auto-generated method stub
-		return null;
+		return cho;
 	}
 
 	public ArrayList<Choice> getAll() {
