@@ -23,24 +23,6 @@ public abstract class ExamHelperDao<T extends Serializable, Long> implements IEx
 	}
 	
 	public abstract T findByID(Long id);
-	/*	String table = type.getSimpleName();
-		//I should have a variable which stores the name of the ID from each table
-		String query = "SELECT * from " + table + " WHERE pk_qid = " + id;
-		Connection con = DBConnect.getConnection();
-		try{
-			Statement s = con.createStatement();
-			ResultSet rs = s.executeQuery(query);
-			if(rs != null){
-				while(rs.next()) {
-					//price = rs.getDouble("cottagePrice");
-				}
-			}
-			s.close();
-		}
-		catch (SQLException e) {
-	            System.err.println("in findByID " + e.getMessage());
-	        } */
-		// TODO Auto-generated method stub
 
 
 	public abstract T findByName(String name) ;
@@ -67,7 +49,6 @@ public abstract class ExamHelperDao<T extends Serializable, Long> implements IEx
 	            System.err.println("in count " + e.getMessage());
 	        }
 		return i;
-			// TODO Auto-generated method stub
 	}
 
 	public abstract void save(T entity); 

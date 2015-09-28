@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import model.Choice;
 
 
-public class ChoiceDao implements IChoiceDao<Choice, Long> {
+public class ChoiceDao extends ExamHelperDao<Choice, Long> implements IChoiceDao<Choice, Long> {
 
 	public Choice findByID(Long id) {
 		Choice cho = new Choice();
@@ -31,7 +31,6 @@ public class ChoiceDao implements IChoiceDao<Choice, Long> {
 		            System.err.println("in findByID " + e.getMessage());
 				
 				}	
-		// TODO Auto-generated method stub
 		return cho;
 	}
 
@@ -56,18 +55,27 @@ public class ChoiceDao implements IChoiceDao<Choice, Long> {
 		            System.err.println("in findByName " + e.getMessage());
 				
 				}	
-		// TODO Auto-generated method stub
 		return cho;
 	}
 
 	public ArrayList<Choice> getAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public int count() {
-		// TODO Auto-generated method stub
-		return 0;
+		ArrayList<Choice> allChoices = new  ArrayList<Choice>();
+		String query = "SELECT * from `examhelper`.`choice`" ;
+		Connection con = DBConnect.getConnection();
+		try{
+			Statement s = con.createStatement();
+			ResultSet rs = s.executeQuery(query);
+			if(!(!rs.isBeforeFirst() && rs.getRow() == 0)){
+				while(rs.next()) {
+					allChoices.add(new Choice(rs.getLong("pk_choid"), rs.getLong("fk_qid_choice"), rs.getString("description")));
+				}
+			}
+			s.close();
+		}
+		catch (SQLException e) {
+	            System.err.println("in getAll " + e.getMessage());
+	        }
+		return allChoices ;
 	}
 
 	public void save(Choice entity) {
@@ -84,8 +92,6 @@ public class ChoiceDao implements IChoiceDao<Choice, Long> {
 		catch (SQLException e) {
             System.err.println(e.getMessage());
         }		
-		// TODO Auto-generated method stub
-		
 	}
 
 	public void update(Choice entity) {
@@ -102,8 +108,6 @@ public class ChoiceDao implements IChoiceDao<Choice, Long> {
 		catch (SQLException e) {
             System.err.println(e.getMessage());
         }
-		// TODO Auto-generated method stub
-		
 	}
 
 	public void saveOrUpdate(Choice entity) {
@@ -140,13 +144,10 @@ public class ChoiceDao implements IChoiceDao<Choice, Long> {
 		catch (SQLException e) {
 			System.err.println(e.getMessage());
 		}
-		// TODO Auto-generated method stub
-		
 	}
 
 	public void delete(Choice entity) {
-		// TODO Auto-generated method stub
-		String query = "DELETE FROM `examhelper`.`choice` WHERE `pk_qid`= " +entity.getChoiceId()+" ;";
+		String query = "DELETE FROM `examhelper`.`choice` WHERE `pk_choid`= " +entity.getChoiceId()+" ;";
 		System.out.println(query);
 		Connection con = DBConnect.getConnection();	
 		try{
@@ -162,8 +163,7 @@ public class ChoiceDao implements IChoiceDao<Choice, Long> {
 	}
 
 	public void delete(Long id) {
-		// TODO Auto-generated method stub
-		String query = "DELETE FROM `examhelper`.`choice` WHERE `pk_qid`= " +id+" ;";
+		String query = "DELETE FROM `examhelper`.`choice` WHERE `pk_choid`= " +id+" ;";
 		System.out.println(query);
 		Connection con = DBConnect.getConnection();	
 		try{
@@ -179,8 +179,23 @@ public class ChoiceDao implements IChoiceDao<Choice, Long> {
 	}
 
 	public ArrayList<Choice> getChoicesForQuestion(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Choice> choices = new  ArrayList<Choice>();
+		String query = "SELECT * from `examhelper`.`choice` WHERE `fk_qid_choice` = " + id ;		
+		Connection con = DBConnect.getConnection();
+		try{
+			Statement s = con.createStatement();
+			ResultSet rs = s.executeQuery(query);
+			if(!(!rs.isBeforeFirst() && rs.getRow() == 0)){
+				while(rs.next()) {
+					choices.add(new Choice(rs.getLong("pk_choid"), rs.getLong("fk_qid_choice"), rs.getString("description")));
+				}
+			}
+			s.close();
+		}
+		catch (SQLException e) {
+	            System.err.println("in getAll " + e.getMessage());
+	        }
+		return choices ;
 	}
 
 }

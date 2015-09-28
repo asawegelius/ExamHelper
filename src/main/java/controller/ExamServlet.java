@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.AnswerCollection;
+import dao.AnswerDao;
 import dao.ChoiceCollection;
+import dao.ChoiceDao;
 import dao.IAnswerDao;
 import dao.IChoiceDao;
 import dao.IQuestionDao;
@@ -36,9 +38,12 @@ public class ExamServlet extends HttpServlet {
 	 */
 	public ExamServlet() {
 		super();
+		//this.questionsDatabase = new QuestionCollection();
 		this.questionsDatabase = new QuestionDao();
-		this.choicesDatabase = new ChoiceCollection();
-		this.answersDatabase = new AnswerCollection();
+		//this.choicesDatabase = new ChoiceCollection();
+		this.choicesDatabase = new ChoiceDao();
+		//this.answersDatabase = new AnswerCollection();
+		this.answersDatabase = new AnswerDao();
 	}
 
 	/**
