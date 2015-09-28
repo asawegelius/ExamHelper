@@ -113,6 +113,41 @@ public class QuestionDao implements IQuestionDao<Question , Long> {
 	}
 
 	public void saveOrUpdate(Question entity) {
+		//if the entity is already in the database update it
+		String query = "SELECT * from `examhelper`.`pk_qid` = '" + entity.getQuestionId() + "'";
+		Connection con = DBConnect.getConnection();
+		try{
+			Statement s = con.createStatement();
+			ResultSet rs = s.executeQuery(query);
+			if(rs != null){
+				String query1 = "UPDATE `examhelper`.`question` SET `pk_qid`= " +entity.getQuestionId()+" , `name`='" + entity.getName() + "', `description`='" + 
+				entity.getDescription() + "', `fk_chaid_answer`" + entity.getChapter()+ " WHERE `pk_qid` = " +entity.getQuestionId() + ";";
+				System.out.println(query1);
+				try{
+					s.execute(query1);
+				}
+				catch (SQLException e) {
+					System.err.println(e.getMessage());
+				}
+			}
+			else
+			{
+				String query2 = "INSERT INTO `examhelper`.`question` (`pk_qid`, `name`, `description`, `fk_chaid_answer`) VALUES (" +
+						entity.getQuestionId() + ", '" + entity.getName() + "' , '" + entity.getDescription() + "', " + entity.getChapter()+ ")";
+				System.out.println(query2);
+				try{
+					s.execute(query2);
+				}
+				catch (SQLException e) {
+		            System.err.println(e.getMessage());
+		        }
+			}
+			s.close();
+		}
+		catch (SQLException e) {
+			System.err.println(e.getMessage());
+		}
+		
 		// TODO Auto-generated method stub
 		
 	}
@@ -120,9 +155,7 @@ public class QuestionDao implements IQuestionDao<Question , Long> {
 	public void delete(Question entity) {
 		// TODO Auto-generated method stub DELETE
 		
-		//not working
-		String query = "DELETE FROM `examhelper`.`question`	WHERE `pk_qid`= " +entity.getQuestionId()+" , `name`='" + entity.getName() + "', `description`='" + 
-				entity.getDescription() + "', `fk_chaid_answer`" + entity.getChapter()+ " WHERE `pk_qid` = " +entity.getQuestionId() + ";";
+		String query = "DELETE FROM `examhelper`.`question`	WHERE `pk_qid`= " +entity.getQuestionId()+" ;";
 		System.out.println(query);
 		Connection con = DBConnect.getConnection();	
 		try{
@@ -139,7 +172,18 @@ public class QuestionDao implements IQuestionDao<Question , Long> {
 
 	public void delete(Long id) {
 		// TODO Auto-generated method stub
-		
+		String query = "DELETE FROM `examhelper`.`question`	WHERE `pk_qid`= " +id+" ;";
+		System.out.println(query);
+		Connection con = DBConnect.getConnection();	
+		try{
+			Statement s = con.createStatement();
+			s.execute(query);
+			
+			s.close();
+		}
+		catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
 	}
 
 	public Question[] getRandomPair(long i) {
