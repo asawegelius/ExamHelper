@@ -3,12 +3,14 @@ package daotest;
 import dao.AnswerCollection;
 import junit.framework.TestCase;
 import model.Answer;
+/**
+ * @author gulc0112
+ *
+ */
 
 public class AnswerCollectionTest extends TestCase {
 	public void test() {
 		update();
-	    /*saveOrUpdate();
-	    delete();*/
 		findID();
 	    answerForQuestion();
 	}
@@ -24,14 +26,6 @@ public class AnswerCollectionTest extends TestCase {
 		assertEquals(c.getDescription(),b.getDescription());
 		
 	}
-	/*public void saveOrUpdate(){
-		
-	}*/
-	
-	/*public void delete() {
-		
-	}*/
-
 
 	public void findID() {
 		AnswerCollection a = new AnswerCollection();

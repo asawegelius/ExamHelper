@@ -1,16 +1,17 @@
 package daotest;
 
 import java.util.ArrayList;
-
 import dao.ChoiceCollection;
 import junit.framework.TestCase;
 import model.Choice;
+/**
+ * @author gulc0112
+ *
+ */
 
 public class ChoiceCollectionTest extends TestCase {
 	public void test() {
 		update();
-	    /*saveOrUpdate();
-	    delete();*/
 		findID();
 		getChoicesForQuestion();
 	}
@@ -25,15 +26,6 @@ public class ChoiceCollectionTest extends TestCase {
 		assertEquals(b.getDescription(),a.getDescription());
 		
 	}
-	/*public void saveOrUpdate(){
-		
-	}*/
-	
-	/*public void delete() {
-		
-	}*/
-
-
 	public void findID() {
 		ChoiceCollection c = new ChoiceCollection();
 		long b = 55;
