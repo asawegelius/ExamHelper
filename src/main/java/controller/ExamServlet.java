@@ -39,10 +39,11 @@ public class ExamServlet extends HttpServlet {
 	public ExamServlet() {
 		super();
 		//this.questionsDatabase = new QuestionCollection();
-		this.questionsDatabase = new QuestionDao();
 		//this.choicesDatabase = new ChoiceCollection();
-		this.choicesDatabase = new ChoiceDao();
 		//this.answersDatabase = new AnswerCollection();
+
+		this.questionsDatabase = new QuestionDao();
+		this.choicesDatabase = new ChoiceDao();
 		this.answersDatabase = new AnswerDao();
 	}
 
