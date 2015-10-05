@@ -2,7 +2,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="model.Question" import="model.Exam"
 	import="model.Choice" import="java.util.ArrayList"%>
-	
 	<form action="result.jsp" method="post">
 	
 <%
@@ -46,5 +45,5 @@
 </div>
 <%}%>
 
-<input type="submit" value="Submit">
+<input type="submit" value="Get answers" class="get_answers">
 </form>

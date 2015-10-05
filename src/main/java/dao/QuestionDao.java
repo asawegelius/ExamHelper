@@ -180,6 +180,9 @@ public class QuestionDao extends ExamHelperDao<Question, Long> implements
 
 	public Question[] getRandomPair(long i) {
 		ArrayList<Question> allQuestions = getAll();
+		if(allQuestions.size() == 0){
+			return null;
+		}
 		Question[] pair = new Question[2];
 		Random random = new Random();
 		int first = random.nextInt(allQuestions.size());
